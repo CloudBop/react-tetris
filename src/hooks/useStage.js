@@ -22,6 +22,10 @@ export default function useStage(player, resetPlayer) {
             }
           });
         });
+        //
+        if (player.collided) {
+          resetPlayer();
+        }
 
         return newStage;
       };
@@ -30,7 +34,7 @@ export default function useStage(player, resetPlayer) {
     },
     // diff with primitives, no good for when the same tetromino comes after...
     // [ player.collided, player.pos.x, player.pos.y, player.tetromino ]
-    [ player ]
+    [ player, resetPlayer ]
   );
   //
   return [ stage, setStage ];
